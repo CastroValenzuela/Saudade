@@ -13,11 +13,10 @@ import {
   CheckCircle2, 
   Menu, 
   X, 
-  ChevronRight,
+  Heart,
   Smile,
-  Zap,
-  Activity,
-  Heart
+  Mail,
+  Send
 } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -27,12 +26,192 @@ import Lenis from "lenis";
 // Register GSAP ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
 
+// ── MAIN ROUTER COMPONENT ───────────────────────────────────────────────────
 export default function App() {
+  const [isPreview, setIsPreview] = useState(false);
+
+  useEffect(() => {
+    // Check if the URL contains the preview path or query parameter
+    const path = window.location.pathname;
+    const search = window.location.search;
+    if (path === "/preview" || search.includes("preview=true")) {
+      setIsPreview(true);
+    }
+  }, []);
+
+  return isPreview ? <MainLanding /> : <ComingSoon />;
+}
+
+// ── COMING SOON VIEW COMPONENT ──────────────────────────────────────────────
+function ComingSoon() {
+  const [timeLeft, setTimeLeft] = useState({ days: 30, hours: 0, minutes: 0, seconds: 0 });
+  const [email, setEmail] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
+    // Target date: July 15, 2026
+    const targetDate = new Date("2026-07-15T00:00:00-06:00").getTime();
+
+    const updateTimer = () => {
+      const now = new Date().getTime();
+      const difference = targetDate - now;
+
+      if (difference <= 0) {
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+      } else {
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+        setTimeLeft({ days, hours, minutes, seconds });
+      }
+    };
+
+    updateTimer();
+    const interval = setInterval(updateTimer, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+    
+    // Save locally or print console mock
+    localStorage.setItem("saudade_lead_email", email);
+    setSubmitted(true);
+  };
+
+  return (
+    <div className="relative w-full min-h-screen text-charcoal flex flex-col justify-between overflow-x-hidden font-sans">
+      
+      {/* 3D Mesh Gradient Background */}
+      <div className="mesh-bg-container">
+        <div className="floating-blob blob-sage"></div>
+        <div className="floating-blob blob-lavender"></div>
+        <div className="floating-blob blob-sand"></div>
+      </div>
+
+      {/* Mini Nav Header */}
+      <header className="w-full max-w-7xl mx-auto px-6 h-20 flex items-center justify-between z-10">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-xl bg-sage flex items-center justify-center text-white font-display font-semibold text-lg shadow-sm">
+            S
+          </div>
+          <span className="font-display font-semibold text-xl tracking-tight text-charcoal">
+            saudade
+          </span>
+        </div>
+        <div>
+          <a 
+            href="https://app.saudade.mx/auth" 
+            className="px-5 py-2.5 bg-white/60 hover:bg-white text-charcoal border border-sage/15 hover:border-sage/30 font-medium text-xs sm:text-sm rounded-xl transition-all duration-200"
+          >
+            Acceso Psicólogos
+          </a>
+        </div>
+      </header>
+
+      {/* Main Content Area */}
+      <main className="flex-1 flex items-center justify-center px-6 py-12 z-10">
+        <div className="max-w-xl w-full text-center flex flex-col items-center">
+          
+          {/* Badge */}
+          <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-sage/10 text-sage font-medium text-xs sm:text-sm mb-6 border border-sage/20 animate-pulse">
+            <Sparkles className="w-3.5 h-3.5" />
+            Lanzamiento Próximamente
+          </div>
+
+          {/* Heading */}
+          <h1 className="font-display font-semibold text-3xl sm:text-4xl md:text-5xl text-charcoal leading-tight mb-4 tracking-tight">
+            El espacio digital que tu <br className="hidden sm:inline" />
+            <span className="text-sage font-semibold">práctica clínica merece</span>
+          </h1>
+
+          {/* Subheading */}
+          <p className="text-sm sm:text-base text-slate max-w-md leading-relaxed mb-8">
+            Estamos construyendo Saudade, la plataforma clínica premium diseñada exclusivamente para psicólogos y terapeutas. Falta muy poco para abrir nuestras puertas.
+          </p>
+
+          {/* Countdown Clock Grid */}
+          <div className="grid grid-cols-4 gap-3 w-full max-w-sm mb-10">
+            {[
+              { value: timeLeft.days, label: "Días" },
+              { value: timeLeft.hours, label: "Horas" },
+              { value: timeLeft.minutes, label: "Min" },
+              { value: timeLeft.seconds, label: "Seg" }
+            ].map((time, idx) => (
+              <div key={idx} className="glass-card rounded-2xl p-3 flex flex-col items-center border border-white/50 shadow-sm">
+                <span className="font-display font-semibold text-2xl sm:text-3xl text-charcoal">
+                  {String(time.value).padStart(2, "0")}
+                </span>
+                <span className="text-[9px] uppercase tracking-wider text-slate font-medium mt-1">
+                  {time.label}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          {/* Email Capture Form */}
+          <div className="w-full max-w-md glass-card rounded-2xl p-5 sm:p-6 border border-white/50 shadow-md">
+            {!submitted ? (
+              <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+                <p className="text-xs text-slate font-medium text-left">
+                  Sé de los primeros en acceder a la prueba exclusiva de 30 días:
+                </p>
+                <div className="flex flex-col sm:flex-row gap-2">
+                  <div className="relative flex-1">
+                    <Mail className="w-4 h-4 text-slate absolute left-3.5 top-1/2 transform -translate-y-1/2" />
+                    <input 
+                      type="email" 
+                      required
+                      placeholder="Tu correo electrónico..."
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      className="w-full h-11 pl-10 pr-4 rounded-xl text-xs glass-input font-medium"
+                    />
+                  </div>
+                  <button 
+                    type="submit" 
+                    className="h-11 px-5 bg-sage hover:bg-sage/90 text-white font-medium text-xs rounded-xl shadow-sm hover:shadow transition-all duration-200 flex items-center justify-center gap-1.5 group cursor-pointer"
+                  >
+                    Notificarme
+                    <Send className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                  </button>
+                </div>
+              </form>
+            ) : (
+              <div className="flex flex-col items-center py-4 gap-2 text-center">
+                <CheckCircle2 className="w-8 h-8 text-sage" />
+                <h4 className="font-semibold text-charcoal text-sm">¡Registro completado!</h4>
+                <p className="text-xs text-slate leading-relaxed max-w-xs">
+                  Te avisaremos en cuanto abramos las puertas y te enviaremos tu enlace de invitación para tus 30 días gratuitos.
+                </p>
+              </div>
+            )}
+          </div>
+
+        </div>
+      </main>
+
+      {/* Mini Footer */}
+      <footer className="w-full max-w-7xl mx-auto px-6 py-8 flex flex-col sm:flex-row justify-between items-center text-[10px] text-slate/60 gap-3 z-10">
+        <span>&copy; {new Date().getFullYear()} Saudade. Todos los derechos reservados.</span>
+        <div className="flex gap-4">
+          <a href="https://app.saudade.mx/politicas" className="hover:text-sage transition-colors">Aviso de Privacidad</a>
+          <a href="https://app.saudade.mx/terminos" className="hover:text-sage transition-colors">Términos y Condiciones</a>
+        </div>
+      </footer>
+
+    </div>
+  );
+}
+
+// ── FULL MAIN LANDING VIEW COMPONENT ────────────────────────────────────────
+function MainLanding() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState("agenda"); // pricing tab or bento interactive tab
   const [billingCycle, setBillingCycle] = useState<'monthly' | 'annual'>('monthly');
-
 
   // 1. Initialize Lenis Smooth Scrolling
   useEffect(() => {
@@ -102,7 +281,6 @@ export default function App() {
     }, "-=0.3");
 
     // C. Sticky Dashboard Scrollytelling
-    // Left sections activate highlights on the right dashboard mockup
     const stages = ["whatsapp", "clinical", "ai"];
     stages.forEach((stage, idx) => {
       ScrollTrigger.create({
