@@ -31,6 +31,8 @@ export default function App() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("agenda"); // pricing tab or bento interactive tab
+  const [billingCycle, setBillingCycle] = useState<'monthly' | 'annual'>('monthly');
+
 
   // 1. Initialize Lenis Smooth Scrolling
   useEffect(() => {
@@ -287,10 +289,10 @@ export default function App() {
 
           <div className="hero-ctas flex flex-col sm:flex-row items-center gap-4 w-full justify-center">
             <a 
-              href="https://app.saudade.mx/auth?signup=true" 
+              href="#precios" 
               className="w-full sm:w-auto px-8 py-4 bg-sage hover:bg-sage/90 text-white font-medium rounded-xl shadow-md hover:shadow-lg transition-all hover:-translate-y-0.5 duration-200 flex items-center justify-center gap-2 group"
             >
-              Prueba 14 días gratis
+              Prueba 30 días gratis
               <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
             </a>
             <a 
@@ -818,6 +820,29 @@ export default function App() {
             </p>
           </div>
 
+          {/* Toggle Mensual / Anual */}
+          <div className="flex items-center justify-center gap-3 mb-8">
+            <span className={`text-sm font-semibold transition-colors duration-200 ${billingCycle === 'monthly' ? 'text-charcoal' : 'text-slate/60'}`}>
+              Mensual
+            </span>
+            
+            <button
+              onClick={() => setBillingCycle(prev => prev === 'monthly' ? 'annual' : 'monthly')}
+              className="relative w-12 h-6 rounded-full transition-all duration-300 focus:outline-none bg-sage/20 cursor-pointer"
+              aria-label="Cambiar ciclo de facturación"
+            >
+              <div className={`absolute top-0.5 w-5 h-5 bg-sage rounded-full shadow-md transition-all duration-300 ${billingCycle === 'annual' ? 'left-[calc(100%-1.375rem)]' : 'left-0.5'}`} />
+            </button>
+
+            <span className={`text-sm font-semibold transition-colors duration-200 ${billingCycle === 'annual' ? 'text-charcoal' : 'text-slate/60'}`}>
+              Anual
+            </span>
+
+            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-700">
+              Ahorra 16% (2 meses gratis)
+            </span>
+          </div>
+
           {/* Pricing Card */}
           <div className="pricing-card max-w-md mx-auto glass-card rounded-3xl border border-sage/20 p-8 md:p-10 shadow-2xl relative bg-white/95">
             {/* Ribbon */}
@@ -826,12 +851,30 @@ export default function App() {
             </div>
             
             <div className="mt-4 flex flex-col items-center">
-              <span className="font-display text-slate text-sm line-through">$890 MXN</span>
-              <div className="flex items-baseline gap-1 mt-1">
-                <span className="font-display text-4xl sm:text-5xl font-semibold text-charcoal">$590</span>
-                <span className="text-slate font-medium text-base">MXN/mes</span>
-              </div>
-              <p className="text-xs text-sage font-medium mt-2">Prueba gratuita de 14 días. Cancela cuando quieras.</p>
+              {billingCycle === 'monthly' ? (
+                <>
+                  <div className="flex items-baseline gap-1 mt-1">
+                    <span className="font-display text-4xl sm:text-5xl font-semibold text-charcoal">$749</span>
+                    <span className="text-slate font-medium text-base">MXN/mes</span>
+                  </div>
+                  <p className="text-xs text-sage font-medium mt-2">Prueba gratuita de 30 días. Cancela cuando quieras.</p>
+                </>
+              ) : (
+                <>
+                  <span className="font-display text-slate text-sm line-through">$8,988 MXN</span>
+                  <div className="flex items-baseline gap-1 mt-1">
+                    <span className="font-display text-4xl sm:text-5xl font-semibold text-charcoal">$7,490</span>
+                    <span className="text-slate font-medium text-base">MXN/año</span>
+                  </div>
+                  <div className="flex flex-col items-center gap-1 mt-1">
+                    <span className="text-[10px] text-slate font-medium">$624 MXN/mes efectivo</span>
+                    <span className="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full">
+                      Ahorras $1,498 MXN al año
+                    </span>
+                  </div>
+                  <p className="text-xs text-sage font-medium mt-2">Prueba gratuita de 30 días. Cancela cuando quieras.</p>
+                </>
+              )}
             </div>
 
             <hr className="border-sage/10 my-8" />
@@ -852,7 +895,7 @@ export default function App() {
             </div>
 
             <a 
-              href="https://app.saudade.mx/auth?signup=true" 
+              href={`https://app.saudade.mx/auth?signup=true&plan=${billingCycle === 'monthly' ? 'pro_monthly' : 'pro_annual'}`} 
               className="w-full py-4 bg-sage hover:bg-sage/90 text-white font-medium rounded-xl shadow-md hover:shadow-lg transition-all duration-200 block text-center"
             >
               Comenzar prueba gratis ahora
