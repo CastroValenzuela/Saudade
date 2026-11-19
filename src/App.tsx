@@ -340,20 +340,12 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           
           {/* Logo */}
-          <a href="#" className="flex items-center gap-3 group">
+          <a href="#" className="flex items-center group py-1">
             <img
-              src="/saudade_icon.png"
-              alt="Saudade Logo"
-              className="h-10 w-10 rounded-xl shadow-sm transition-transform duration-300 group-hover:scale-105"
+              src="/saudade_brand.svg"
+              alt="Saudade Gestión Clínica"
+              className="h-9 sm:h-10 w-auto object-contain select-none transition-transform duration-300 group-hover:scale-[1.02]"
             />
-            <div className="flex flex-col">
-              <span className="font-extrabold text-2xl tracking-tight text-slate-900 font-display">
-                saudade
-              </span>
-              <span className="text-[9px] font-bold uppercase tracking-widest text-emerald-700 -mt-1">
-                Gestión Clínica
-              </span>
-            </div>
           </a>
 
           {/* Desktop Navigation Links */}
@@ -1417,15 +1409,12 @@ export default function App() {
             
             {/* Brand Col */}
             <div className="md:col-span-5 space-y-4">
-              <div className="flex items-center gap-3">
+              <div className="flex items-center">
                 <img
-                  src="/saudade_icon_white.png"
-                  alt="Saudade Logo Blanco"
-                  className="h-10 w-10 rounded-xl"
+                  src="/saudade_brand_white.svg"
+                  alt="Saudade"
+                  className="h-9 sm:h-10 w-auto object-contain select-none"
                 />
-                <span className="font-extrabold text-2xl tracking-tight text-white font-display">
-                  saudade
-                </span>
               </div>
               <p className="text-xs text-slate-400 leading-relaxed max-w-sm">
                 Plataforma SaaS integral de gestión clínica diseñada específicamente para psicólogos, terapeutas y centros de salud mental en México y Latinoamérica.
