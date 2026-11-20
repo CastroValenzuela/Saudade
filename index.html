@@ -125,7 +125,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
      Inyecta el iframe de app.saudade.mx dentro de
      #saudade-public-profile-container (sección "¿Tienes dudas?").
 
-     Segmentación Europa / América con la misma lógica que el pop-up
+     Segmentación México / LATAM con la misma lógica que el pop-up
      promocional: ?agenda= > zona horaria > idioma del navegador > Europa.
        - Europa   -> offer 765
        - América  -> offer 11495   (LATAM + EE. UU.)
@@ -140,7 +140,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   var OFFER_EU  = '765';
   var OFFER_AM  = '11495';
 
-  /* ---- Elegir versión: ?agenda= > zona horaria > idioma > Europa ---- */
+  /* ---- Elegir versión: ?agenda= > zona horaria > idioma > México ---- */
   function queryVariant() {
     var m = location.search.match(/[?&]agenda=(eu|am)\b/i);
     return m ? m[1].toLowerCase() : '';
@@ -355,9 +355,9 @@ para los primeros 30 especialistas</p>
   // España en noviembre = UTC+1. México (CDMX) = UTC-6 todo el año.
   var DATES = {
     es: {
-      bfStart:   Date.UTC(2026, 9, 31, 23, 0, 0),   // 01/11 00:00 Madrid
-      cdFrom:    Date.UTC(2026, 10, 15, 23, 0, 0),  // 16/11 00:00 Madrid -> se enciende el contador
-      bfEnd:     Date.UTC(2026, 10, 30, 22, 59, 59) // 30/11 23:59:59 Madrid
+      bfStart:   Date.UTC(2026, 9, 31, 23, 0, 0),   // 01/11 00:00 CDMX
+      cdFrom:    Date.UTC(2026, 10, 15, 23, 0, 0),  // 16/11 00:00 CDMX -> se enciende el contador
+      bfEnd:     Date.UTC(2026, 10, 30, 22, 59, 59) // 30/11 23:59:59 CDMX
     },
     mx: {
       bfStart:   Date.UTC(2026, 10, 1, 6, 0, 0),    // 01/11 00:00 CDMX
@@ -1064,7 +1064,7 @@ document.addEventListener("DOMContentLoaded", function () {
       console.log("pacientesValue:", pacientesValue);
       console.log("numPacientes:", numPacientes);
 
-      if (empleados === "autonomo" && numPacientes < 20) {
+      if ((empleados === "independiente" || empleados === "autonomo") && numPacientes < 20) {
         window.location.href = "https://app.saudade.mx/auth";
       } else {
         window.location.href = "https://app.saudade.mx/auth/demo";
