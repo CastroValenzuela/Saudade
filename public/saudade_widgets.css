@@ -1,0 +1,417 @@
+
+/* ==========================================================================
+   SAUDADE BRAND IDENTITY & INTERACTIVE WIDGETS
+   ========================================================================== */
+
+:root {
+  --saudade-navy: #021a50;
+  --saudade-navy-dark: #0a1128;
+  --saudade-emerald: #10b981;
+  --saudade-emerald-dark: #059669;
+  --saudade-emerald-light: #ecfdf5;
+  --saudade-accent: #3b82f6;
+  --saudade-bg-soft: #f8fafc;
+}
+
+/* Enhancing Navbar and Header buttons to Saudade Navy & Emerald */
+.button.is-small, .button3, .button-2extramt:not(.is-secondary) {
+  background: linear-gradient(135deg, #021a50 0%, #1e3a8a 100%) !important;
+  border-radius: 999px !important;
+  font-weight: 600 !important;
+  box-shadow: 0 4px 14px rgba(2, 26, 80, 0.25) !important;
+  transition: all 0.25s ease !important;
+}
+
+.button.is-small:hover, .button-2extramt:not(.is-secondary):hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 20px rgba(2, 26, 80, 0.35) !important;
+  background: linear-gradient(135deg, #032470 0%, #2563eb 100%) !important;
+}
+
+.button-2extramt.is-secondary {
+  border: 1.5px solid #021a50 !important;
+  color: #021a50 !important;
+  border-radius: 999px !important;
+  font-weight: 600 !important;
+  background: #ffffff !important;
+}
+
+.button-2extramt.is-secondary:hover {
+  background: #f1f5f9 !important;
+  border-color: #021a50 !important;
+}
+
+/* Banner de aviso superior con colores oficiales de Saudade */
+.section-counter-header, .div-block-40 {
+  background: #021a50 !important;
+  color: #ffffff !important;
+}
+
+.text-span-33 {
+  color: #ffffff !important;
+}
+
+.paragraph-53, .paragraph-51 {
+  background: #10b981 !important;
+  color: #ffffff !important;
+  border-radius: 6px !important;
+  font-weight: 700 !important;
+}
+
+/* ==========================================================================
+   SAUDADE MANIFESTO & PHILOSOPHY
+   ========================================================================== */
+.saudade-manifesto-section {
+  padding: 5rem 1.5rem;
+  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 50%, #f1f5f9 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.saudade-manifesto-container {
+  max-width: 1050px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.saudade-manifesto-card {
+  background: linear-gradient(145deg, #021a50 0%, #0f172a 100%);
+  border-radius: 28px;
+  padding: 4rem 3rem;
+  color: #ffffff;
+  box-shadow: 0 25px 60px -15px rgba(2, 26, 80, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.saudade-manifesto-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -20%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.saudade-manifesto-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  color: #34d399;
+  padding: 6px 18px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.saudade-manifesto-title {
+  font-size: 2.25rem;
+  font-weight: 800;
+  line-height: 1.25;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+}
+
+.saudade-manifesto-title span {
+  color: #34d399;
+}
+
+.saudade-manifesto-text {
+  font-size: 1.15rem;
+  color: #cbd5e1;
+  max-width: 780px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.7;
+}
+
+.saudade-features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+  text-align: left;
+}
+
+.saudade-feature-item {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1.5rem;
+  border-radius: 18px;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.saudade-feature-item:hover {
+  transform: translateY(-3px);
+  border-color: rgba(16, 185, 129, 0.4);
+}
+
+.saudade-feature-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: rgba(16, 185, 129, 0.2);
+  color: #34d399;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.saudade-feature-heading {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+
+.saudade-feature-desc {
+  font-size: 0.88rem;
+  color: #94a3b8;
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   INTERACTIVE CALCULATOR & WHATSAPP DEMO SECTION
+   ========================================================================== */
+.saudade-interactive-section {
+  padding: 5rem 1.5rem;
+  background: #ffffff;
+}
+
+.saudade-interactive-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .saudade-interactive-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Calculator Card */
+.saudade-calc-card {
+  background: #f8fafc;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 24px;
+  padding: 2.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+}
+
+.saudade-calc-header {
+  margin-bottom: 2rem;
+}
+
+.saudade-calc-eyebrow {
+  color: #10b981;
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.saudade-calc-title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #021a50;
+  line-height: 1.3;
+}
+
+.saudade-slider-container {
+  margin: 2rem 0;
+}
+
+.saudade-slider-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.saudade-slider-val {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #021a50;
+  background: #e2e8f0;
+  padding: 4px 14px;
+  border-radius: 999px;
+}
+
+.saudade-range {
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  background: #cbd5e1;
+  outline: none;
+  cursor: pointer;
+  accent-color: #10b981;
+}
+
+.saudade-calc-results {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+.saudade-calc-stat {
+  background: #ffffff;
+  padding: 1.25rem;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+}
+
+.saudade-calc-stat-num {
+  font-size: 1.65rem;
+  font-weight: 800;
+  color: #10b981;
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+
+.saudade-calc-stat-lbl {
+  font-size: 0.82rem;
+  color: #64748b;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+/* WhatsApp Live Simulator Card */
+.saudade-wa-mockup {
+  background: #efeae2;
+  border-radius: 32px;
+  border: 8px solid #1e293b;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+  max-width: 380px;
+  margin: 0 auto;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.saudade-wa-header {
+  background: #075e54;
+  color: #ffffff;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.saudade-wa-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #128c7e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+  color: #fff;
+}
+
+.saudade-wa-info h4 {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.saudade-wa-info p {
+  margin: 0;
+  font-size: 0.75rem;
+  color: #a7f3d0;
+}
+
+.saudade-wa-body {
+  padding: 16px;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background-image: radial-gradient(#d1d5db 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+.saudade-wa-bubble {
+  background: #ffffff;
+  padding: 12px 14px;
+  border-radius: 12px 12px 12px 2px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  font-size: 0.85rem;
+  color: #111827;
+  line-height: 1.45;
+  position: relative;
+}
+
+.saudade-wa-time {
+  font-size: 0.68rem;
+  color: #9ca3af;
+  text-align: right;
+  margin-top: 4px;
+}
+
+.saudade-wa-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.saudade-wa-btn {
+  background: #f0fdf4;
+  border: 1px solid #86efac;
+  color: #166534;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.saudade-wa-btn:hover {
+  background: #dcfce7;
+  transform: scale(1.02);
+}
+
+.saudade-wa-reply {
+  background: #dcf8c6;
+  padding: 10px 14px;
+  border-radius: 12px 12px 2px 12px;
+  align-self: flex-end;
+  font-size: 0.85rem;
+  color: #064e3b;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  display: none;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
