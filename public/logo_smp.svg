@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60">
+    <rect width="200" height="60" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+    <circle cx="32" cy="30" r="16" fill="#021a50"/>
+    <text x="32" y="36" font-family="Montserrat, sans-serif" font-weight="900" font-size="14" fill="#ffffff" text-anchor="middle">Ψ</text>
+    <text x="60" y="27" font-family="Montserrat, sans-serif" font-weight="800" font-size="11" fill="#021a50">SOCIEDAD MEXICANA</text>
+    <text x="60" y="41" font-family="Montserrat, sans-serif" font-weight="600" font-size="9" fill="#64748b">DE PSICOLOGÍA · SMP</text>
+  </svg>
